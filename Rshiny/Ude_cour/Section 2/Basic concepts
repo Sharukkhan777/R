@@ -1,0 +1,16 @@
+* Shiny is simple maintaining the operation between UI and SERVER
+
+
+====== UI setup & layout =======
+* Page types e.g. "basicPage", "fluidPage"
+* Multi-page app with tabs
+* Style your app without CSS or HTML
+  * Package: "shinythemes"
+  * R code only
+ * Object formatting with HTML tags(you can customize each and every element in html)
+
+
+
+
+
+
