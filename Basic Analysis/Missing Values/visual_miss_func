@@ -1,0 +1,21 @@
+
+df_visual_miss_func <- function(df){
+  # df is dataframe
+  total_rows = dim(df)[1]
+  # find the NA count
+  missing_vals <- colSums(is.na(df))
+  #----Visual Part----
+  # importing the library
+  library(plotly)
+  # figure
+  fig <- plot_ly(
+    x = names(missing_vals),
+    y = missing_vals,
+    type = "bar"
+  )
+  title_str <- paste("Total Rows = ",total_rows)
+  fig <- layout(fig,title = title_str)
+  fig
+}
+
+df_visual_miss_func(df)
