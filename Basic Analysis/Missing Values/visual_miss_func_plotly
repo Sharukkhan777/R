@@ -1,4 +1,7 @@
-Disclaimer : Character should change to Factor
+Disclaimer : 
+>>> Columns 
+* character >>>> for one column --- df$col_name[df$col_name == ""] <- NA ---
+                 for whole data ---- df[df == ""] <- NA ----
 ###################################
 FUNCTION NAME : df_visual_miss_func
 PARAMETER : df # dataframe name
