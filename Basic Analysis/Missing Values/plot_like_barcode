@@ -1,0 +1,2 @@
+library(visdat)
+vis_dat(df)
