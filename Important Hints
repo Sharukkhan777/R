@@ -1,0 +1,3 @@
+#-----exec in R-------
+> eval(parse(text="x=555")) # here eval,parse,text is mandatory
+> x
