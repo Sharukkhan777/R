@@ -1,9 +1,19 @@
-
+###################################
+FUNCTION NAME : df_visual_miss_func
+PARAMETER : df # dataframe name
+RETURN : bar chart of missing values for each column
+EXAMPLE : df_visual_miss_func(df)
+###################################
+CODE:
 df_visual_miss_func <- function(df){
+  # df is dataframe
   # df is dataframe
   total_rows = dim(df)[1]
   # find the NA count
   missing_vals <- colSums(is.na(df))
+  # calculate percentage
+  cal_per <- function(x){return(as.integer((x/total_rows)*100))}
+  percent_vals <- lapply(missing_vals , cal_per)
   #----Visual Part----
   # importing the library
   library(plotly)
@@ -11,7 +21,8 @@ df_visual_miss_func <- function(df){
   fig <- plot_ly(
     x = names(missing_vals),
     y = missing_vals,
-    type = "bar"
+    type = "bar",
+    text = ~paste("Percent Missing = ",percent_vals)
   )
   title_str <- paste("Total Rows = ",total_rows)
   fig <- layout(fig,title = title_str)
