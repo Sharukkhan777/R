@@ -1,3 +1,6 @@
 #-----exec in R-------
 > eval(parse(text="x=555")) # here eval,parse,text is mandatory
 > x
+
+#------Pivottable in R--------
+https://stackoverflow.com/questions/6667091/pivot-table-like-output-in-r
