@@ -3,13 +3,15 @@ Disclaimer :
 * character or factor >>>> for one column --- df$col_name[df$col_name == ""] <- NA ---
                            for whole data ---- df[df == ""] <- NA ----
 ###################################
-FUNCTION NAME : df_visual_miss_func
+FUNCTION NAME : visual_miss_func_plotly
 PARAMETER : df # dataframe name
 RETURN : bar chart of missing values for each column
-EXAMPLE : df_visual_miss_func(df)
+EXAMPLE : visual_miss_func_plotly(df)
 ###################################
 CODE:
-df_visual_miss_func <- function(df){
+visual_miss_func_plotly <- function(df){
+  # import plotly
+  library(plotly)
   # df is dataframe
   # df is dataframe
   total_rows = dim(df)[1]
