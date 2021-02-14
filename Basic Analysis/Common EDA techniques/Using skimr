@@ -1,0 +1,50 @@
+library(skimr)
+skim(df)
+
+
+======================================
+*********--------OUTPUT-----**********
+======================================
+
+-- Data Summary ------------------------
+                           Values
+Name                       df    
+Number of rows             2916  
+Number of columns          15    
+_______________________          
+Column type frequency:           
+  character                5     
+  factor                   1     
+  numeric                  9     
+________________________         
+Group variables            None  
+
+-- Variable type: character -----------------------------------------------------------------------------------------------------------------------------
+# A tibble: 5 x 8
+  skim_variable  n_missing complete_rate   min   max empty n_unique whitespace
+* <chr>              <int>         <dbl> <int> <int> <int>    <int>      <int>
+1 country                0             1     4    20     0       85          0
+2 iso_code               0             1     0     8   240       82          0
+3 date                   0             1    10    10     0       61          0
+4 vaccines               0             1     7    82     0       16          0
+5 source_website         0             1    20   211     0       81          0
+
+-- Variable type: factor --------------------------------------------------------------------------------------------------------------------------------
+# A tibble: 1 x 6
+  skim_variable n_missing complete_rate ordered n_unique top_counts                           
+* <chr>             <int>         <dbl> <lgl>      <int> <chr>                                
+1 source_name           0             1 FALSE         51 Min: 849, Gov: 300, Nat: 104, Nat: 88
+
+-- Variable type: numeric -------------------------------------------------------------------------------------------------------------------------------
+# A tibble: 9 x 11
+  skim_variable                       n_missing complete_rate       mean         sd    p0      p25       p50       p75       p100 hist 
+* <chr>                                   <int>         <dbl>      <dbl>      <dbl> <dbl>    <dbl>     <dbl>     <dbl>      <dbl> <chr>
+1 total_vaccinations                       1048         0.641 1252920.   4149778.       0 25492.   153830    653250.   46390270   ▇▁▁▁▁
+2 people_vaccinated                        1386         0.525 1058740.   3461625.       0 24773    143008.   560784.   34723964   ▇▁▁▁▁
+3 people_fully_vaccinated                  1978         0.322  296533.   1042177.       1  5541.    23833    120061.   11188782   ▇▁▁▁▁
+4 daily_vaccinations_raw                   1377         0.528   69520.    193080.       0  1998.    10566     54613     2218752   ▇▁▁▁▁
+5 daily_vaccinations                        115         0.961   55556.    172074.       1  1205      6149     28395     1916190   ▇▁▁▁▁
+6 total_vaccinations_per_hundred           1048         0.641       4.97       9.49     0     0.48      1.88      4.27       71.2 ▇▁▁▁▁
+7 people_vaccinated_per_hundred            1386         0.525       4.45       7.55     0     0.5       2.02      3.50       45.3 ▇▁▁▁▁
+8 people_fully_vaccinated_per_hundred      1978         0.322       1.28       3.49     0     0.07      0.45      1.03       27.7 ▇▁▁▁▁
+9 daily_vaccinations_per_million            115         0.961    2024.      3562.       0   342       925      1699       30869   ▇▁▁▁▁
