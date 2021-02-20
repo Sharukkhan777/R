@@ -1,0 +1,188 @@
+
+# # try this
+# library("readxl")
+# df <- read_excel("C://Users//SHARUK KHAN_2//Desktop//jeni data.xlsx")
+#==========================================
+#------------------------------------------
+#----------BACKEND FUNCTIONS---------------
+#------------------------------------------
+#==========================================
+# creating functions
+# creating the functions for creating sample 
+# df_name <-df
+
+column_type_changer<- function(df){
+func_sample_str <- function(df_name){
+  col_names <- colnames(df_name)
+  ans_c <- c()
+  sample_df_index <- sample(1:nrow(df_name),5)
+  sample_df <- df_name[sample_df_index,]
+  for (i in col_names) {
+    ans_str <- ""
+    ans_str_1 <- sample_df[i][[1]]
+    for (j in ans_str_1) {
+      ans_str <- paste(ans_str, j,",")
+    }
+  ans_c <- c(ans_c, ans_str)
+  }
+  return(ans_c)
+}
+#------------------------------------------
+# another function to create types
+func_type_col <- function(df_name){
+  col_names <- colnames(df_name)
+  ans_c <- c()
+  for (i in col_names) {
+    ans_c <- c(ans_c, class(df[i][[1]]))
+  }
+  return(ans_c)
+}
+#------------------------------------------
+
+# create a dataframe of type
+df_type <- data.frame(Column_name = colnames(df),
+                      type = func_type_col(df),
+                      sample_values = func_sample_str(df)
+                      )
+#------------------------------------------
+#CODE PRINT FUNCTION BACKEND
+func_return_code <- function(df_name_str,
+                             selected_col_name,
+                             selected_type,
+                             selected_date_format){
+  if (selected_type == "numeric") {
+    ans_str <- paste(df_name_str,"$",
+                     selected_col_name," <- as.numeric(",
+                     df_name_str,"$",
+                     selected_col_name,")", sep = "")
+  }
+  else if (selected_type == "character") {
+    ans_str <- paste(df_name_str,"$",
+                     selected_col_name," <- as.character(",
+                     df_name_str,"$",
+                     selected_col_name,")",sep = "")
+  }
+  else if (selected_type == "logical") {
+    ans_str <- paste(df_name_str,"$",
+                     selected_col_name," <- as.logical(",
+                     df_name_str,"$",
+                     selected_col_name,")",sep = "")
+  }
+  else if (selected_type == "factor") {
+    ans_str <- paste(df_name_str,"$",
+                     selected_col_name," <- as.factor(",
+                     df_name_str,"$",
+                     selected_col_name,")",sep = "")
+  }
+  else {
+    # set the indian time zone
+    Sys.setenv(tz = "Asia/Calcutta")
+    ans_str <- paste(df_name_str,"$",
+                     selected_col_name,"<- as.POSIXct(",
+                     df_name_str,"$",
+                     selected_col_name,',format = "',
+                     selected_date_format,'")',sep = "")
+  }
+  return(ans_str)
+}
+#------------------------------------------
+# shiny app
+library(shiny)
+library(shinythemes)
+ui <- fluidPage(
+  # set theme
+  theme = shinytheme("superhero"),
+  # h1 and setting the table
+  # navbarPage(title = "my_nav_bar",
+  #            tabPanel(title = "Change_into_tab",
+  #                     ))
+  h4("Existing TYPES and SAMPLE VALUES"),
+  dataTableOutput(outputId = "my_table"),
+  hr(),
+  # 3 columns layout for selection
+  # col 1 layout
+  fluidRow(
+    column(3,
+           h3("DataFrame name"),
+           textInput(inputId = "df_name_tI",
+                     label = "Name of the dataframe",
+                      value = "df")),
+    column(3,
+           h3("Column names"),
+           selectInput(inputId = "col_name_sI",
+                       label = "select column to choose",
+                       choices = names(df))),
+    column(3,
+           h3("Change Into"),
+           selectInput(inputId = "type_changer_sI",
+                       label = "Change into",
+                       c("numeric"="numeric",
+                         "character"="character",
+                         "logical"="logical",
+                         "factor"="factor",
+                         "datetime"="datetime"))),
+    column(3,
+           h3('If "datetime" selected'),
+           textInput(inputId = "date_tI",
+                     label = "Enter the datetime format as in existing data, Example: '2000-01-30', enter = %Y-%m-%d")
+    )
+  ),
+  # apply button layout
+  fluidRow(column(12, 
+           actionButton(inputId = "apply_aB",
+                        label = "Submit & see code below"))),
+  hr(),
+  # code output
+  fluidRow(column(10,
+            verbatimTextOutput(outputId = "code_vTO",
+                               placeholder = TRUE)),
+           column(2,actionButton(inputId = "delete_aB",
+                                 label = "Delete Code"))
+  )
+)
+
+server <- function(input, output, session) {
+  output$my_table <- renderDataTable({
+    df_type
+    }, options = list(
+    scrollY = '200px', paging = FALSE))
+  # the below code is most important
+  # to make scrollable data set 
+  # scrolly = '300px'
+  # and entries not showing 
+  # paging = FALSE
+  
+  #--------------------------------------
+  # code operation
+  
+  ## empty initial log
+  textLog <- reactiveVal("# CODE GOES HERE")
+  
+  observeEvent(input$apply_aB, {
+    ## add 'Button GO Pressed' to existing log
+    textLog(paste(textLog(), "\n",func_return_code(as.character(input$df_name_tI),
+                                                  as.character(input$col_name_sI),
+                                                   as.character(input$type_changer_sI),
+                                                  as.character(input$date_tI))))
+  })
+  
+  output$code_vTO <- renderText({
+    textLog()
+  })
+}
+
+shinyApp(ui, server)
+}
+# call the function 
+# create own dataframe
+df <- data.frame(col_1 = c(1,2.5,3,4,5),
+                 col_2 = c("a","b","c","d","e"),
+                 col_3 = c("2020-01-20","2020-01-20","2020-01-20","2020-01-20","2020-01-20"),
+                 col_4 = c("g1","g1","g1","g1","g2"))
+# ####################
+#####important#####
+########################
+column_type_changer(df)
+#########################
+######################
+########################
