@@ -1,0 +1,195 @@
+
+.myDiv {
+    height: 270px;
+    width: 100%;
+    background-color: rgb(3, 23, 112);
+    border: 2px solid black;
+    /* Firefox */
+    background-image:
+        -moz-radial-gradient(circle, #FFFFFF 2px, rgba(248,255,128,.5) 4px, transparent 40px),
+        -moz-radial-gradient(circle, #FFFFFF 1px, rgba(255,186,170,.4) 3px, transparent 30px),
+        -moz-radial-gradient(ellipse, rgba(255,255,255,.9) 1px, rgba(251,255,186,.3) 2px, transparent 40px),
+        -moz-radial-gradient(ellipse, rgba(255,255,255,.4), rgba(253,255,219,.2) 1px, transparent 30px);
+ 
+    /* Webkit */
+    background-image:
+        -webkit-gradient(radial, 50% 50%, 2, 50% 50%, 5, from(white), color-stop(0.1, rgba(248,255,128,.5)), to(transparent)),
+        -webkit-gradient(radial, 50% 50%, 1, 50% 50%, 7, from(white), color-stop(0.1, rgba(255,186,170,.4)), to(transparent)),
+        -webkit-gradient(radial, 50% 50%, 1, 50% 50%, 7, from(rgba(255,255,255,.9)), color-stop(0.05, rgba(251,255,186,.3)), to(transparent)),
+        -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 7, from(rgba(255,255,255,.4)), color-stop(0.03, rgba(253,255,219,.2)), to(transparent));
+ 
+    /* Background Attributes */
+    background-size: 550px 550px, 350px 350px, 250px 270px, 220px 200px;
+    background-position: 0 0, 30px 60px, 130px 270px, 70px 150px;
+ 
+    /* Animation */
+    animation-name: movement;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+ 
+    /* Firefox */
+    -moz-animation-name: movement;
+    -moz-animation-duration: 0.5s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+ 
+    /* Webkit */
+    -webkit-animation-name: movement;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+}
+@keyframes movement
+{
+    from {
+            background-position: 0 0, 30px 0px, 130px 20px, 70px 10px;
+    }
+    to {
+            background-position: -550px 0, -320px 0px, -120px 20px, -150px 10px;
+    }
+}
+@-moz-keyframes movement
+{
+    from {
+            background-position: 0 0, 30px 60px, 130px 270px, 70px 150px;
+    }
+    to {
+            background-position: -550px 0, -320px 60px, -120px 270px, -150px 150px;
+    }
+}
+@-webkit-keyframes movement
+{
+    from {
+            background-position: 0 0, 30px 0px, 130px 0px, 70px 1px;
+    }
+    to {
+            background-position: -550px 0, -320px 0px, -120px 0px, -150px 1px;
+    }
+}
+
+body {
+  background-image:  url('bg_app_2.png');
+  background-size: 300px 300px;
+}
+
+.eagle {
+    position: absolute;
+    z-index: 2;
+    height:125px;
+    width:125px;
+  }
+  
+.bt {
+    position: absolute;
+    z-index: 1;
+  }
+
+
+img.mainpageeagle {
+  width: 320px;
+  height: 400px;
+}
+
+img.timer {
+  width: 100%;
+  height: auto;
+}
+
+
+img.nav_eagle{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  z-index: 2;
+  margin: 0% 0% 0% 75%;
+}
+
+.ans_txt{
+  position: absolute;
+  left: 120px;
+  z-index: 2;
+  font-family: "digital"; 
+  font-size:30px; 
+  line-height:30px; 
+  font-weight:normal; 
+  color:#70F503;
+}
+
+@font-face {
+font-family: 'digital';
+src: url('digital-7.ttf');
+}
+
+
+h1 { font-family: "digital"; font-size:30px; line-height:30px; font-weight:normal; color:#70F503;}
+
+h2 { font-weight:normal; color:white;}
+
+h4 { font-family: "digital"; font-size:30px; line-height:30px; font-weight:normal; color:#70F503;}
+
+h6 { font-family: "digital"; font-size:14px; line-height:30px; font-weight:bold; color:navy;}
+
+button { font-family: "digital"; font-size:25px; line-height:30px; font-weight:bold; color:#00ffdd;}
+
+#ans { font-family: "digital"; font-size:30px; line-height:30px; font-weight:bold; color:white;}
+
+
+#timer {font-family: "digital"; font-size:24px; line-height:30px; font-weight:bold; color:red;}
+
+#distance {font-family: "digital"; font-size:24px; line-height:30px; font-weight:bold; color:red;}
+
+.no_button{font-family: "digital"; font-size:25px; line-height:30px; font-weight:bold; color:#00ffdd;border-color: #04AA6D;
+  border: 2px solid black;
+}
+
+
+.signal{
+  height: 50px;
+  width: 100%;
+  background-color: #83eb34;
+  border: 2px solid black
+}
+.startGame{
+    height:90px;
+    width:200px;
+    font-family: "digital"; 
+    font-size:55px; 
+    line-height:30px; 
+    font-weight:bold; 
+    color:#00ffdd;
+    border-color: #04AA6D;
+    border: 2px solid black;
+}
+.del{
+    height:70px;
+    width:60px;
+    font-family: "digital"; 
+    font-size:25px; 
+    line-height:30px; 
+    font-weight:bold; 
+    color:#00ffdd;
+    border-color: #04AA6D;
+    border: 2px solid black;
+}
+
+.enter{
+    height:70px;
+    width:60px;
+    font-family: "digital"; 
+    font-size:25px; 
+    line-height:30px; 
+    font-weight:bold; 
+    color:#00ffdd;
+    border-color: #04AA6D;
+    border: 2px solid black;
+}
+
+#about{
+  background-color: rgb(0, 0, 0,.7);
+}
+
+.inscreen{
+  display: flex;
+  justify-content: space-between;
+}
