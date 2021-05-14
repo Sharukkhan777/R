@@ -1,0 +1,14 @@
+name: MathEagleGame
+title: MathEagleGame
+username:
+account: sharukkhanstat777
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4131307
+bundleId: 4598504
+url: https://sharukkhanstat777.shinyapps.io/MathEagleGame/
+when: 1621002889.22597
+lastSyncTime: 1621002889.22597
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData|Details.txt|others
