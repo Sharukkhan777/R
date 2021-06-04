@@ -1,6 +1,6 @@
 Hi friends!!! Just an update on session features !!!
 
 To make shiny app run without overlapping the user values, We have to use session$userData and you can search the source code in the folder called "sessionSourceCode"
-We can also use the source code in the current folder, and it works perfectly fine, when one player plays.
+We can also use the source code in the current folder, and it works perfectly fine, when a player plays.
 
 Thanks for the support given by shiny and Rstudio community !!!
