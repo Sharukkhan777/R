@@ -1,3 +1,5 @@
-Hi Rshiny friends!!!
+Hi friends!!!
 
-To see each session value separater code, Go to the folder session
+In order to make shiny app run without overlapping the user value, We have to make some code changes and you can search the code in the folder called "session"
+
+Thanks for the support given by shiny and Rstudio community !!!
