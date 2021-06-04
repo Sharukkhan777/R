@@ -1,0 +1,14 @@
+name: MainMain
+title: MainMain
+username:
+account: sharukkhanstat777
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3943009
+bundleId: 4636307
+url: https://sharukkhanstat777.shinyapps.io/MainMain/
+when: 1621925444.96769
+lastSyncTime: 1621925444.96769
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData|Details.txt|others
